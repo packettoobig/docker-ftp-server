@@ -19,7 +19,7 @@ docker run \
 	--publish 20-21:20-21/tcp \
 	--publish 40000-40009:40000-40009/tcp \
 	--volume /data:/home/user \
-	garethflowers/ftp-server
+	pilbbq/ftp-server
 ```
 
 ### ... via `docker compose`
@@ -31,7 +31,7 @@ services:
     environment:
       - FTP_PASS=123
       - FTP_USER=user
-    image: garethflowers/ftp-server
+    image: pilbbq/ftp-server
     ports:
       - '20-21:20-21/tcp'
       - '40000-40009:40000-40009/tcp'
