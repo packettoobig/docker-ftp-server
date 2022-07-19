@@ -1,8 +1,8 @@
 ## STATIC SECTION
 # daemon
 background=NO
-listen_ipv6=YES
-listen=NO
+listen_ipv6=NO
+listen=YES
 session_support=NO
 
 # access
