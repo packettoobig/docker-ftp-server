@@ -33,8 +33,6 @@ connect_from_port_20=YES
 ftp_data_port=21
 max_clients=32
 max_per_ip=16
-#Bps
-
 anon_max_rate=1000 #1kBps
 pasv_enable=YES
 pasv_addr_resolve=YES
