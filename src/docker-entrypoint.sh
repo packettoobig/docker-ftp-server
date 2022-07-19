@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
+# Create users and groups
 addgroup \
 	-g $GID \
 	-S \
@@ -16,6 +17,12 @@ adduser \
 mkdir -p /home/$FTP_USER
 chown -R $FTP_USER:$FTP_USER /home/$FTP_USER
 echo "$FTP_USER:$FTP_PASS" | /usr/sbin/chpasswd
+
+# Manage config file (transform template variables into static data)
+eval "cat <<EOF
+$(< /etc/vsftpd.conf.template)
+EOF
+" | cat > /etc/vsftpd.conf
 
 touch /var/log/vsftpd.log
 tail -f /var/log/vsftpd.log | tee /dev/stdout &

@@ -1,3 +1,4 @@
+## STATIC SECTION
 # daemon
 background=NO
 listen_ipv6=YES
@@ -22,9 +23,6 @@ dirmessage_enable=NO
 hide_ids=YES
 hide_file=NO
 
-# file transfer
-write_enable=NO
-
 # logging
 dual_log_enable=YES
 log_ftp_protocol=YES
@@ -36,15 +34,19 @@ ftp_data_port=21
 max_clients=32
 max_per_ip=16
 #Bps
-local_max_rate=1000000 #1000kBps
+
 anon_max_rate=1000 #1kBps
 pasv_enable=YES
-pasv_address=0.0.0.0
 pasv_addr_resolve=YES
 pasv_promiscuous=NO
-pasv_max_port=40009
-pasv_min_port=40000
 port_enable=YES
 
 # tweaks
 seccomp_sandbox=NO
+
+## DYNAMIC SECTION
+write_enable=$WRITE_ENABLE
+local_max_rate=$BW_LIMIT
+pasv_address=$PASV_ADDR
+pasv_max_port=$PASV_MAX_PORT
+pasv_min_port=$PASV_MIN_PORT
