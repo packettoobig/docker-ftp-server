@@ -1,7 +1,7 @@
 ## STATIC SECTION
 # daemon
 background=NO
-listen_ipv6=NO
+listen_ipv6=YES
 listen=YES
 session_support=NO
 
@@ -21,7 +21,6 @@ passwd_chroot_enable=YES
 dirlist_enable=YES
 dirmessage_enable=NO
 hide_ids=YES
-hide_file=NO
 
 # logging
 dual_log_enable=YES
@@ -29,8 +28,8 @@ log_ftp_protocol=YES
 xferlog_enable=YES
 
 # network
-connect_from_port_20=YES
-ftp_data_port=21
+connect_from_port_20=NO
+ftp_data_port=20
 max_clients=32
 max_per_ip=16
 anon_max_rate=1000 #1kBps
