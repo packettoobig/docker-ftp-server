@@ -18,17 +18,19 @@ mkdir -p /home/$FTP_USER
 chown -R $FTP_USER:$FTP_USER /home/$FTP_USER
 echo "$FTP_USER:$FTP_PASS" | /usr/sbin/chpasswd
 
-# openssl req -x509 -noenc -days 3650 -newkey ec -pkeyopt ec_paramgen_curve:P-256 \
-# 	-keyout /etc/vsftpd.key -out /etc/vsftpd.crt \
-# 	-subj "/CN=$FQDN" \
-# 	-addext "subjectAltName=DNS:$FQDN,DNS:*.$FQDN"
-
 # Create SSL cert
-openssl req -x509 -noenc -days 3650 -newkey rsa:2048 \
+openssl req -x509 -noenc -days 3650 -newkey ec -pkeyopt ec_paramgen_curve:P-256 \
 	-keyout /etc/ssl/private/vsftpd.key \
 	-out /etc/ssl/certs/vsftpd.crt \
 	-subj "/CN=$FQDN" \
 	-addext "subjectAltName=DNS:$FQDN,DNS:*.$FQDN"
+
+# FYI: same option but RSA (less secure)
+# openssl req -x509 -noenc -days 3650 -newkey rsa:2048 \
+# 	-keyout /etc/ssl/private/vsftpd.key \
+# 	-out /etc/ssl/certs/vsftpd.crt \
+# 	-subj "/CN=$FQDN" \
+# 	-addext "subjectAltName=DNS:$FQDN,DNS:*.$FQDN"
 
 # Manage config file (transform template variables into static data)
 eval "cat <<EOF
