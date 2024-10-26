@@ -7,10 +7,11 @@ ENV FTP_USER=foo \
 	BW_LIMIT=1000000 \
 	PASV_ADDR=0.0.0.0 \
 	PASV_MIN_PORT=40000 \
-	PASV_MAX_PORT=40019
+	PASV_MAX_PORT=40019 \
+	FQDN=ftp.example.com
 
 RUN apk add --no-cache --update \
-	vsftpd bash
+	vsftpd bash openssl
 
 COPY [ "/src/vsftpd.conf.template", "/etc" ]
 COPY [ "/src/docker-entrypoint.sh", "/" ]
